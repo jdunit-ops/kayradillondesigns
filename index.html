@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kayra Dillon Designs</title>
+<meta name="description" content="Kayra Dillon Designs creates custom residential landscape plans for front yards, backyards, and water-wise gardens in Sacramento, Yuba City, Sutter, and Chico. Schedule a consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap">
+<style>
+/* Layout: a drafting table. Calm vellum sheets, plan drawings as the imagery, one marigold call to action repeated down the page. */
+:root {
+  --vellum: #F3F4EC;
+  --paper: #FCFBF7;
+  --ink: #24301F;
+  --ink-soft: #56614D;
+  --moss: #3F5B32;
+  --sage: #A7B79A;
+  --sage-wash: #E5EBDA;
+  --marigold: #E3A83A;
+  --marigold-deep: #D0922A;
+  --clay: #B9694A;
+  --clay-deep: #9A4F33;
+  --line: #D8DDCB;
+  --on-moss: #F4F2E8;
+  --on-moss-soft: #CAD4BE;
+  --field: #FFFFFF;
+  --field-line: #CDD3C0;
+  --glass: rgba(243, 244, 236, 0.9);
+  --shadow: rgba(36, 48, 31, 0.32);
+  --scrim: rgba(24, 30, 20, 0.74);
+  --focus-ring: rgba(63, 91, 50, 0.2);
+
+  --display: "Young Serif", Georgia, "Times New Roman", serif;
+  --body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --hand: "Architects Daughter", "Bradley Hand", "Segoe Print", cursive;
+  --radius: 14px;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--vellum);
+  color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; z-index: 40;
+  height: env(safe-area-inset-top, 0px); background: var(--vellum);
+}
+img { max-width: 100%; height: auto; display: block; }
+p { margin: 0; }
+a { color: var(--moss); }
+:focus-visible { outline: 3px solid var(--moss); outline-offset: 3px; }
+section[id] { scroll-margin-top: 80px; }
+
+.wrap {
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+h1, h2, h3 {
+  font-family: var(--display); font-weight: 400; line-height: 1.1;
+  margin: 0; color: var(--ink); text-wrap: balance;
+}
+h1 { font-size: clamp(2.6rem, 5.2vw, 4.3rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(2rem, 3.6vw, 2.85rem); }
+h3 { font-size: 1.4rem; }
+
+.eyebrow {
+  font: 600 0.8rem/1.2 var(--body); letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--moss);
+}
+.mark {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 11C40 4 90 5 130 7s50 2 67-3' stroke='%23E3A83A' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") left bottom / 100% 0.3em no-repeat;
+  padding-bottom: 0.04em;
+}
+
+/* Buttons + links */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+  background: var(--marigold); color: var(--ink);
+  font: 600 1rem/1 var(--body); text-decoration: none;
+  padding: 1.05rem 1.6rem; border: 0; border-radius: 999px; cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.btn:hover { background: var(--marigold-deep); }
+.btn:active { transform: translateY(1px); }
+.btn-sm { padding: 0.72rem 1.15rem; font-size: 0.94rem; }
+.btn-sm .short { display: none; }
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 0.45em;
+  font-weight: 600; color: var(--moss); text-decoration: none;
+}
+.link-arrow::after { content: "→"; transition: transform 0.2s; }
+.link-arrow:hover::after { transform: translateX(4px); }
+
+/* Header */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30;
+  background: var(--glass);
+  -webkit-backdrop-filter: saturate(1.2) blur(10px); backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav { display: flex; align-items: center; gap: 28px; min-height: 70px; }
+.brand { display: flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; margin-right: auto; }
+.brand-mark { width: 36px; height: 36px; flex: none; }
+.bm-bg { fill: var(--moss); }
+.bm-leaf { fill: var(--marigold); }
+.bm-vein { stroke: var(--moss); }
+.brand-name { display: flex; flex-direction: column; gap: 3px; }
+.brand-name b { font: 400 1.22rem/1 var(--display); white-space: nowrap; }
+.brand-name small { font: 600 0.66rem/1 var(--body); letter-spacing: 0.24em; text-transform: uppercase; color: var(--moss); }
+.nav nav { display: flex; gap: 28px; }
+.nav nav a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 0.97rem; }
+.nav nav a:hover { color: var(--moss); }
+
+/* Hero */
+.hero { padding-block: clamp(40px, 6vw, 84px) clamp(12px, 2vw, 28px); }
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(36px, 5vw, 72px); align-items: center;
+}
+.hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.lede { font-size: 1.18rem; color: var(--ink-soft); max-width: 46ch; }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 6px; }
+.hero-points {
+  list-style: none; margin: 8px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--ink-soft); font-size: 0.95rem;
+}
+.hero-points li { display: flex; align-items: center; gap: 9px; }
+.hero-points li::before {
+  content: ""; width: 10px; height: 10px; flex: none;
+  border-radius: 0 60% 0 60%; background: var(--sage);
+}
+
+.compare { margin: 0; min-width: 0; }
+.compare-frame {
+  --pos: 36%;
+  position: relative; aspect-ratio: 3 / 2; max-width: 100%;
+  border-radius: var(--radius); overflow: hidden; background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 60px -34px var(--shadow);
+  cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+}
+.compare-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.compare-before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.compare-handle {
+  position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; margin-left: -1.5px;
+  background: var(--paper); pointer-events: none;
+}
+.compare-handle span {
+  position: absolute; top: 50%; left: 50%; width: 48px; height: 48px; margin: -24px 0 0 -24px;
+  border-radius: 50%; background: var(--marigold); box-shadow: 0 6px 18px var(--shadow);
+  display: grid; place-items: center;
+}
+.compare-handle span::before {
+  content: ""; width: 22px; height: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 12'%3E%3Cpath d='M6 1 1 6l5 5M16 1l5 5-5 5' stroke='%2324301F' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.compare-frame:has(.compare-range:focus-visible) .compare-handle span { outline: 3px solid var(--moss); outline-offset: 3px; }
+.compare-range {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); border: 0; opacity: 0;
+}
+.tag {
+  position: absolute; top: 14px; pointer-events: none;
+  font: 600 0.72rem/1 var(--body); letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 8px 12px; border-radius: 999px; background: var(--glass); color: var(--ink);
+}
+.tag-before { left: 14px; }
+.tag-after { right: 14px; }
+.compare figcaption { margin-top: 12px; font-size: 0.88rem; color: var(--ink-soft); }
+
+/* Sections */
+.section { padding-block: clamp(68px, 8vw, 112px); }
+.section-paper { background: var(--paper); border-block: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin-bottom: clamp(36px, 5vw, 56px); }
+.section-head p:not(.eyebrow) { color: var(--ink-soft); font-size: 1.08rem; }
+
+.sheet {
+  position: relative; display: block; width: 100%; aspect-ratio: 3 / 2; max-width: 100%;
+  padding: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+  background: var(--paper); cursor: zoom-in;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.sheet img { width: 100%; height: 100%; object-fit: cover; }
+.sheet:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -26px var(--shadow); }
+.sheet-tag {
+  position: absolute; left: 10px; bottom: 10px;
+  font: 400 0.9rem/1 var(--hand); color: var(--ink);
+  background: var(--glass); padding: 7px 10px; border-radius: 6px;
+}
+
+.steps {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(22px, 3vw, 36px);
+}
+.step { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.step-body { display: flex; flex-direction: column; gap: 8px; }
+.step-no { font: 400 1.05rem/1 var(--hand); color: var(--clay); }
+.step-body p { color: var(--ink-soft); }
+
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(22px, 3vw, 32px); }
+.work { margin: 0; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.work figcaption { display: flex; flex-direction: column; gap: 2px; }
+.work figcaption strong { font: 400 1.25rem/1.25 var(--display); }
+.work figcaption span { color: var(--ink-soft); font-size: 0.96rem; }
+.work-cta {
+  display: flex; flex-direction: column; justify-content: center; gap: 10px;
+  padding: clamp(24px, 3vw, 36px); border: 1.5px dashed var(--sage); border-radius: 10px;
+  background: var(--sage-wash); color: var(--ink); text-decoration: none;
+  transition: border-color 0.2s, transform 0.25s;
+}
+.work-cta:hover { border-color: var(--moss); transform: translateY(-3px); }
+.work-cta .hand { font: 400 1.1rem/1.2 var(--hand); color: var(--clay); }
+.work-cta strong { font: 400 1.6rem/1.2 var(--display); text-wrap: balance; }
+
+.about-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(36px, 6vw, 96px); align-items: start;
+}
+.about-copy { display: flex; flex-direction: column; gap: 18px; max-width: 540px; }
+.about-copy p { color: var(--ink-soft); }
+.about-copy .link-arrow { margin-top: 4px; }
+.services { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 3vw, 36px); }
+.services h3 { font: 600 0.8rem/1.2 var(--body); letter-spacing: 0.15em; text-transform: uppercase; color: var(--moss); margin-bottom: 6px; }
+.services ul { list-style: none; margin: 0; padding: 0; }
+.services li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 16px; align-items: start; padding-block: 18px; border-top: 1px solid var(--line); }
+.services li:first-child { border-top: 0; }
+.icon { width: 46px; height: 46px; border-radius: 50%; background: var(--sage-wash); display: grid; place-items: center; }
+.icon svg { width: 24px; height: 24px; fill: none; stroke: var(--moss); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.services strong { display: block; font-weight: 600; font-size: 1.06rem; }
+.services li span { color: var(--ink-soft); font-size: 0.97rem; }
+
+/* Consultation */
+.consult { background: var(--moss); color: var(--on-moss); padding-block: clamp(68px, 8vw, 112px); }
+.consult h2 { color: var(--on-moss); }
+.consult-grid {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(36px, 6vw, 84px); align-items: start;
+}
+.consult-copy { display: flex; flex-direction: column; gap: 18px; }
+.consult-copy > p:not(.eyebrow) { color: var(--on-moss-soft); font-size: 1.1rem; max-width: 42ch; }
+.consult .eyebrow { color: var(--marigold); }
+.contact { margin: 14px 0 0; display: grid; gap: 18px; }
+.contact div { display: grid; gap: 3px; }
+.contact dt { font: 600 0.74rem/1.2 var(--body); letter-spacing: 0.15em; text-transform: uppercase; color: var(--on-moss-soft); }
+.contact dd { margin: 0; font-size: 1.15rem; overflow-wrap: anywhere; }
+.contact a { color: var(--on-moss); text-decoration: underline; text-decoration-color: var(--marigold); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+
+.consult-form {
+  background: var(--paper); color: var(--ink); border-radius: var(--radius);
+  padding: clamp(22px, 3.4vw, 40px);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 16px;
+  box-shadow: 0 34px 70px -40px var(--scrim);
+}
+.field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.field-full, .consult-form .btn, .form-status, .form-fine { grid-column: 1 / -1; }
+.field label { font-weight: 600; font-size: 0.92rem; }
+.field label small { font-weight: 400; font-size: inherit; color: var(--ink-soft); }
+.field input, .field select, .field textarea {
+  width: 100%; font: inherit; font-size: 1rem; color: var(--ink);
+  background: var(--field); border: 1px solid var(--field-line); border-radius: 10px;
+  padding: 0.8rem 0.9rem; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field select {
+  appearance: none; -webkit-appearance: none; padding-right: 2.4rem;
+  background: var(--field) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%233F5B32' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") right 0.95rem center / 12px no-repeat;
+}
+.field textarea { min-height: 120px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--moss); box-shadow: 0 0 0 4px var(--focus-ring); }
+.field [aria-invalid="true"] { border-color: var(--clay); }
+.consult-form .btn { width: 100%; margin-top: 4px; }
+.form-status { font-size: 0.95rem; color: var(--ink-soft); }
+.form-status:empty { display: none; }
+.form-status.is-ok { color: var(--moss); font-weight: 500; }
+.form-status.is-error { color: var(--clay-deep); font-weight: 500; }
+.form-fine { font-size: 0.85rem; color: var(--ink-soft); text-align: center; }
+
+/* Footer */
+.site-footer { padding-block: 36px; }
+.footer-grid { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; color: var(--ink-soft); font-size: 0.94rem; }
+.footer-grid .brand { margin-right: 0; }
+
+/* Lightbox */
+.lightbox {
+  width: min(1100px, calc(100vw - 32px)); max-height: calc(100vh - 32px);
+  padding: 0; border: 0; border-radius: 12px; background: var(--paper); color: var(--ink);
+  box-shadow: 0 40px 90px -30px var(--scrim);
+}
+.lightbox::backdrop { background: var(--scrim); }
+.lightbox img { width: 100%; max-height: calc(100vh - 110px); object-fit: contain; }
+.lightbox p { padding: 12px 18px 16px; font-size: 0.95rem; color: var(--ink-soft); }
+.lightbox form { position: absolute; top: 10px; right: 10px; margin: 0; }
+.lightbox-close {
+  width: 42px; height: 42px; border: 0; border-radius: 50%; cursor: pointer;
+  background: var(--glass); color: var(--ink); font: 400 1.6rem/1 var(--body);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-grid, .consult-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; max-width: 560px; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .work-cta { grid-column: 1 / -1; }
+}
+@media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .nav nav { display: none; } }
+@media (max-width: 600px) {
+  .gallery { grid-template-columns: 1fr; }
+  .consult-form { grid-template-columns: 1fr; }
+  .nav { min-height: 62px; gap: 14px; }
+  .brand-name b { font-size: 1.08rem; }
+  .brand-mark { width: 32px; height: 32px; }
+}
+@media (max-width: 420px) {
+  .btn-sm .long { display: none; }
+  .btn-sm .short { display: inline; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+</style>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#F3F4EC">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kayra Dillon Designs">
+<meta property="og:description" content="Custom residential landscape plans for front yards, backyards, and water-wise gardens in Sacramento, Yuba City, Sutter, and Chico.">
+<!-- EDIT: once the site has a domain, use the full address, e.g. https://kayradillondesigns.com/images/og-image.jpg -->
+<meta property="og:image" content="images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Kayra Dillon Designs, back to top">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><circle class="bm-bg" cx="20" cy="20" r="19"/><path class="bm-leaf" d="M20 6.5c6.5 6.2 8 13.6 0 27c-8-13.4-6.5-20.8 0-27z"/><path class="bm-vein" d="M20 12v18" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+      <span class="brand-name"><b>Kayra Dillon</b><small>Designs</small></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="#process">Process</a>
+      <a href="#work">Design work</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn btn-sm" href="#consult"><span class="long">Book a consultation</span><span class="short">Book now</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Residential landscape design</p>
+        <h1>Beautiful yards start with a <span class="mark">plan</span>.</h1>
+        <p class="lede">Kayra Dillon Designs creates custom landscape plans for front yards, backyards, and everything in between. You’ll see how your yard comes together before a single plant goes in the ground.</p>
+        <div class="cta-row">
+          <a class="btn" href="#consult">Schedule a consultation</a>
+          <a class="link-arrow" href="#process">See how it works</a>
+        </div>
+        <ul class="hero-points">
+          <li>Custom, scaled plans</li>
+          <li>Plants chosen for your site</li>
+          <li>Ready for you or your installer</li>
+          <li>Serving Sacramento, Yuba City, Sutter, and Chico</li>
+        </ul>
+      </div>
+      <figure class="compare">
+        <div class="compare-frame" id="compare-frame">
+          <img src="images/yard-after.svg" width="1200" height="800" alt="Illustration of a front yard after a landscape design: a shade tree, layered planting beds, path lights, and a curved flagstone path to a terracotta front door.">
+          <div class="compare-before">
+            <img src="images/yard-before.svg" width="1200" height="800" alt="Illustration of the same front yard before the design: a patchy lawn, a straight concrete path, and a few small shrubs.">
+          </div>
+          <span class="tag tag-before">Before</span>
+          <span class="tag tag-after">After</span>
+          <div class="compare-handle" aria-hidden="true"><span></span></div>
+          <input class="compare-range" id="compare-range" type="range" min="0" max="100" value="36" aria-label="Before and after comparison. Use the arrow keys to reveal more of either view.">
+        </div>
+        <figcaption>Drag the handle to compare. Illustration of a front-yard design.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>From first sketch to curb appeal</h2>
+        <p>Three simple steps take your yard from an idea to a plan you can build.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <button class="sheet" type="button" data-full="images/concept-sketch.svg" data-caption="Concept sketch: the big ideas for a front yard, mapped out as loose bubbles.">
+            <img src="images/concept-sketch.svg" width="1200" height="800" loading="lazy" alt="Concept sketch of a front yard with bubbles for a shade tree, welcoming entry, layered planting, a small lawn, and water-wise color.">
+            <span class="sheet-tag">concept sketch</span>
+          </button>
+          <div class="step-body">
+            <span class="step-no">01</span>
+            <h3>Consult and concept</h3>
+            <p>We walk your yard together and talk about how you want to use it. Then the big ideas get sketched out: shade, privacy, color, and a welcoming path to the door.</p>
+          </div>
+        </li>
+        <li class="step">
+          <button class="sheet" type="button" data-full="images/planting-plan.svg" data-caption="Planting plan: every bed, path, and plant placed to scale, with a plant legend.">
+            <img src="images/planting-plan.svg" width="1200" height="800" loading="lazy" alt="Scaled front yard planting plan showing a shade tree, Japanese maple, dwarf olives, deer grass, lavender, boulders, and a flagstone path, with a plant legend.">
+            <span class="sheet-tag">planting plan</span>
+          </button>
+          <div class="step-body">
+            <span class="step-no">02</span>
+            <h3>Planting plan</h3>
+            <p>The concept becomes a scaled drawing. Every bed, path, and plant is placed with care, with a plant list you or your installer can follow.</p>
+          </div>
+        </li>
+        <li class="step">
+          <button class="sheet" type="button" data-full="images/yard-after.svg" data-caption="The finished look: the planting plan brought to life from the curb. Illustration.">
+            <img src="images/yard-after-entry.svg" width="600" height="400" loading="lazy" alt="Illustration of the finished front entry: rounded shrubs along the house, ornamental grasses, lavender, and a flagstone path to the front door.">
+            <span class="sheet-tag">the finished look</span>
+          </button>
+          <div class="step-body">
+            <span class="step-no">03</span>
+            <h3>Curb appeal</h3>
+            <p>With a clear plan in hand, installation goes smoothly. You end up with a yard that looks great from the street and works for the way you live.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-paper" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Design work</p>
+        <h2>A closer look at the drawings</h2>
+        <p>Every design is drawn to scale and shaped around the site, from shady backyards to water-wise front yards. Tap a drawing to see the details.</p>
+      </div>
+      <div class="gallery">
+        <!-- EDIT: replace the two sample plans below with Kayra's own drawings (JPG or PNG work fine). -->
+        <figure class="work">
+          <button class="sheet" type="button" data-full="images/plan-backyard.svg" data-caption="Backyard retreat: paver patio, fire pit with seating, kitchen garden, and a privacy screen.">
+            <img src="images/plan-backyard.svg" width="1200" height="800" loading="lazy" alt="Backyard plan with a paver patio and dining table, a fire pit circle with chairs, raised vegetable beds, a lawn, and planting along the fence.">
+          </button>
+          <figcaption><strong>Backyard retreat</strong><span>Patio, fire pit, and a kitchen garden</span></figcaption>
+        </figure>
+        <figure class="work">
+          <button class="sheet" type="button" data-full="images/plan-waterwise.svg" data-caption="Water-wise front yard: a dry creek bed, boulders, and drought-tolerant planting with no lawn.">
+            <img src="images/plan-waterwise.svg" width="1200" height="800" loading="lazy" alt="Water-wise front yard plan with a dry creek bed of river rock, boulders, concrete steppers, a western redbud, manzanita, and drought-tolerant perennials.">
+          </button>
+          <figcaption><strong>Water-wise front yard</strong><span>Dry creek bed, boulders, and no lawn to mow</span></figcaption>
+        </figure>
+        <a class="work work-cta" href="#consult">
+          <span class="hand">your yard here?</span>
+          <strong>Let’s sketch out what your yard could be.</strong>
+          <span class="link-arrow">Schedule a consultation</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <p class="eyebrow">About</p>
+        <h2>Hi, I’m Kayra.</h2>
+        <p>I design landscapes for homeowners who want their yard to feel as good as the rest of their home. Some want a fresh first impression from the street. Others want a backyard they’ll actually use. Most want both, without wasting water or weekends.</p>
+        <p>Every plan starts with listening: how you live, what you love, and how much upkeep you want. From there I draw a design that fits your site, your style, and your budget.</p>
+        <a class="link-arrow" href="#consult">Start with a consultation</a>
+      </div>
+      <div class="services">
+        <h3>What I design</h3>
+        <ul>
+          <li>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M6 9.5V19h12V9.5"/><path d="M10.5 19v-4.5h3V19"/></svg></span>
+            <div><strong>Front yards and curb appeal</strong><span>Entries, foundation planting, and walkways that welcome you home.</span></div>
+          </li>
+          <li>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10.5a9 5.5 0 0 1 18 0Z"/><path d="M12 10.5V20M8 20h8"/></svg></span>
+            <div><strong>Backyards and outdoor living</strong><span>Patios, seating areas, and gardens made for everyday use.</span></div>
+          </li>
+          <li>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5c3.6 4.3 6 7.4 6 10.4a6 6 0 0 1-12 0c0-3 2.4-6.1 6-10.4Z"/><path d="M12 17.5c-1.6 0-3-1.2-3-3"/></svg></span>
+            <div><strong>Water-wise landscapes</strong><span>Lawn alternatives and drought-tolerant plants that still look lush.</span></div>
+          </li>
+          <li>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4.5" y="3.5" width="15" height="17" rx="1.5"/><circle cx="10" cy="10" r="2.6"/><circle cx="15" cy="15" r="1.8"/><path d="M8 16.5h2"/></svg></span>
+            <div><strong>Planting plans</strong><span>Scaled plans and plant lists for DIY projects or your contractor.</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="consult" id="consult">
+    <div class="wrap consult-grid">
+      <div class="consult-copy">
+        <p class="eyebrow">Schedule a consultation</p>
+        <h2>Let’s plan your yard.</h2>
+        <p>Tell me a little about your project and I’ll reach out to set up a time to walk your yard together.</p>
+        <dl class="contact">
+          <div><dt>Email</dt><dd><a href="mailto:kayra.dillon@gmail.com">kayra.dillon@gmail.com</a></dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+19163908383">(916) 390-8383</a></dd></div>
+          <div><dt>Service area</dt><dd>Sacramento, Yuba City, Sutter, and Chico</dd></div>
+        </dl>
+      </div>
+      <form class="consult-form" id="consult-form" novalidate>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone <small>(optional)</small></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="f-city">Property address or city</label>
+          <input id="f-city" name="city" type="text" autocomplete="address-level2">
+        </div>
+        <div class="field field-full">
+          <label for="f-project">What would you like help with?</label>
+          <select id="f-project" name="project">
+            <option>Front yard and curb appeal</option>
+            <option>Backyard and outdoor living</option>
+            <option>Water-wise makeover</option>
+            <option>Whole property</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field field-full">
+          <label for="f-message">Tell me about your yard <small>(optional)</small></label>
+          <textarea id="f-message" name="message" placeholder="What do you love, what bugs you, and what would you like to change?"></textarea>
+        </div>
+        <button class="btn" type="submit">Request a consultation</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <p class="form-fine">No obligation. Kayra will follow up to find a time that works for you.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <a class="brand" href="#top" aria-label="Kayra Dillon Designs, back to top">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><circle class="bm-bg" cx="20" cy="20" r="19"/><path class="bm-leaf" d="M20 6.5c6.5 6.2 8 13.6 0 27c-8-13.4-6.5-20.8 0-27z"/><path class="bm-vein" d="M20 12v18" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+      <span class="brand-name"><b>Kayra Dillon</b><small>Designs</small></span>
+    </a>
+    <p>Landscape design for Sacramento, Yuba City, Sutter, and Chico</p>
+    <p>© <span id="year">2026</span> Kayra Dillon Designs</p>
+    <a class="link-arrow" href="#consult">Schedule a consultation</a>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Drawing preview">
+  <form method="dialog"><button class="lightbox-close" type="submit" aria-label="Close preview">×</button></form>
+  <img id="lightbox-img" src="images/planting-plan.svg" alt="" width="1200" height="800">
+  <p id="lightbox-cap"></p>
+</dialog>
+
+<script>
+(function () {
+  // ===== EDIT THESE =====
+  var CONTACT_EMAIL = 'kayra.dillon@gmail.com';
+  // Optional: paste a Formspree form URL (https://formspree.io/f/xxxxxxx) so requests
+  // arrive in Kayra's inbox without the visitor's email app opening.
+  var FORM_ENDPOINT = '';
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Before / after comparison
+  var frame = document.getElementById('compare-frame');
+  var range = document.getElementById('compare-range');
+  if (frame && range) {
+    var raf = 0, dragging = false;
+    var set = function (v) {
+      v = Math.max(0, Math.min(100, v));
+      frame.style.setProperty('--pos', v + '%');
+      range.value = Math.round(v);
+    };
+    var fromX = function (x) {
+      var r = frame.getBoundingClientRect();
+      set((x - r.left) / r.width * 100);
+    };
+    var stopIntro = function () { cancelAnimationFrame(raf); };
+    frame.addEventListener('pointerdown', function (e) {
+      dragging = true; stopIntro();
+      try { frame.setPointerCapture(e.pointerId); } catch (err) {}
+      fromX(e.clientX);
+    });
+    frame.addEventListener('pointermove', function (e) { if (dragging) fromX(e.clientX); });
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (t) {
+      frame.addEventListener(t, function () { dragging = false; });
+    });
+    range.addEventListener('input', function () { stopIntro(); set(+range.value); });
+    if (!reduce) {
+      var t0 = performance.now() + 700, dur = 1600;
+      var step = function (now) {
+        var t = Math.min(1, Math.max(0, (now - t0) / dur));
+        set(36 + 16 * Math.sin(t * Math.PI) * (1 - t * 0.15));
+        if (t < 1) raf = requestAnimationFrame(step); else set(36);
+      };
+      raf = requestAnimationFrame(step);
+    }
+  }
+
+  // Drawing preview
+  var dlg = document.getElementById('lightbox');
+  if (dlg && typeof dlg.showModal === 'function') {
+    var big = document.getElementById('lightbox-img');
+    var cap = document.getElementById('lightbox-cap');
+    document.querySelectorAll('[data-full]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var thumb = btn.querySelector('img');
+        big.src = btn.getAttribute('data-full');
+        big.alt = thumb ? thumb.alt : '';
+        cap.textContent = btn.getAttribute('data-caption') || '';
+        dlg.showModal();
+      });
+    });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  }
+
+  // Consultation request
+  var form = document.getElementById('consult-form');
+  var status = document.getElementById('form-status');
+  var say = function (msg, kind) { status.className = 'form-status' + (kind ? ' is-' + kind : ''); status.textContent = msg; };
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = form.elements.name, email = form.elements.email, firstBad = null;
+      var okName = name.value.trim() !== '';
+      var okEmail = /^\S+@\S+\.\S+$/.test(email.value.trim());
+      name.setAttribute('aria-invalid', okName ? 'false' : 'true');
+      email.setAttribute('aria-invalid', okEmail ? 'false' : 'true');
+      if (!okName) firstBad = name; else if (!okEmail) firstBad = email;
+      if (firstBad) { say('Please add your name and a valid email so Kayra can reach you.', 'error'); firstBad.focus(); return; }
+
+      var d = {
+        name: name.value.trim(), email: email.value.trim(),
+        phone: form.elements.phone.value.trim(), city: form.elements.city.value.trim(),
+        project: form.elements.project.value, message: form.elements.message.value.trim()
+      };
+      var first = d.name.split(' ')[0];
+
+      if (FORM_ENDPOINT) {
+        say('Sending your request…');
+        fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(d)
+        }).then(function (r) {
+          if (!r.ok) throw new Error('Request failed');
+          form.reset();
+          say('Thanks, ' + first + '! Your request is in, and Kayra will be in touch soon.', 'ok');
+        }).catch(function () {
+          say('That didn’t go through. Please email ' + CONTACT_EMAIL + ' instead.', 'error');
+        });
+        return;
+      }
+
+      var lines = ['Name: ' + d.name, 'Email: ' + d.email];
+      if (d.phone) lines.push('Phone: ' + d.phone);
+      if (d.city) lines.push('Property: ' + d.city);
+      lines.push('Project: ' + d.project);
+      if (d.message) lines.push('', d.message);
+      window.location.href = 'mailto:' + CONTACT_EMAIL +
+        '?subject=' + encodeURIComponent('Consultation request from ' + d.name) +
+        '&body=' + encodeURIComponent(lines.join('\n'));
+      say('Thanks, ' + first + '! Your email app should open with your request filled in. Press send to finish. If nothing opened, email ' + CONTACT_EMAIL + '.', 'ok');
+    });
+  }
+
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
