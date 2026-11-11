@@ -278,6 +278,8 @@ h3 { font-size: 1.4rem; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--moss); box-shadow: 0 0 0 4px var(--focus-ring); }
 .field [aria-invalid="true"] { border-color: var(--clay); }
 .consult-form .btn { width: 100%; margin-top: 4px; }
+.consult-form .btn:disabled { opacity: 0.7; cursor: progress; }
+.hp { display: none !important; }
 .form-status { font-size: 0.95rem; color: var(--ink-soft); }
 .form-status:empty { display: none; }
 .form-status.is-ok { color: var(--moss); font-weight: 500; }
@@ -539,6 +541,7 @@ h3 { font-size: 1.4rem; }
           <label for="f-message">Tell me about your yard <small>(optional)</small></label>
           <textarea id="f-message" name="message" placeholder="What do you love, what bugs you, and what would you like to change?"></textarea>
         </div>
+        <input class="hp" type="checkbox" name="botcheck" id="f-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn" type="submit">Request a consultation</button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         <p class="form-fine">No obligation. Kayra will follow up to find a time that works for you.</p>
@@ -567,11 +570,11 @@ h3 { font-size: 1.4rem; }
 
 <script>
 (function () {
-  // ===== EDIT THESE =====
+  // ===== SETTINGS =====
   var CONTACT_EMAIL = 'kayra.dillon@gmail.com';
-  // Optional: paste a Formspree form URL (https://formspree.io/f/xxxxxxx) so requests
-  // arrive in Kayra's inbox without the visitor's email app opening.
-  var FORM_ENDPOINT = '';
+  var CONTACT_PHONE = '(916) 390-8383';
+  // Web3Forms access key: consultation requests are emailed to Kayra (free plan).
+  var WEB3FORMS_KEY = '48b28f8e-1a4b-4750-8151-e00d9e7519ce';
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -649,32 +652,43 @@ h3 { font-size: 1.4rem; }
         project: form.elements.project.value, message: form.elements.message.value.trim()
       };
       var first = d.name.split(' ')[0];
+      var done = function () {
+        form.reset();
+        say('Thanks, ' + first + '! Your request was sent. Kayra will be in touch soon to set up a time.', 'ok');
+      };
 
-      if (FORM_ENDPOINT) {
-        say('Sending your request…');
-        fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(d)
-        }).then(function (r) {
-          if (!r.ok) throw new Error('Request failed');
-          form.reset();
-          say('Thanks, ' + first + '! Your request is in, and Kayra will be in touch soon.', 'ok');
-        }).catch(function () {
-          say('That didn’t go through. Please email ' + CONTACT_EMAIL + ' instead.', 'error');
+      // Hidden honeypot: real visitors never see or tick it, so a ticked box means a spam bot.
+      if (form.elements.botcheck && form.elements.botcheck.checked) { done(); return; }
+
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      say('');
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: 'New consultation request from ' + d.name,
+          from_name: 'Kayra Dillon Designs website',
+          replyto: d.email,
+          name: d.name,
+          email: d.email,
+          phone: d.phone || 'Not provided',
+          property: d.city || 'Not provided',
+          project: d.project,
+          message: d.message || 'No message'
+        })
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (!r.ok || !j.success) throw new Error(j.message || 'Request failed');
         });
-        return;
-      }
-
-      var lines = ['Name: ' + d.name, 'Email: ' + d.email];
-      if (d.phone) lines.push('Phone: ' + d.phone);
-      if (d.city) lines.push('Property: ' + d.city);
-      lines.push('Project: ' + d.project);
-      if (d.message) lines.push('', d.message);
-      window.location.href = 'mailto:' + CONTACT_EMAIL +
-        '?subject=' + encodeURIComponent('Consultation request from ' + d.name) +
-        '&body=' + encodeURIComponent(lines.join('\n'));
-      say('Thanks, ' + first + '! Your email app should open with your request filled in. Press send to finish. If nothing opened, email ' + CONTACT_EMAIL + '.', 'ok');
+      }).then(done).catch(function () {
+        say('Sorry, that didn’t go through. Please try again, or reach Kayra at ' + CONTACT_EMAIL + ' or ' + CONTACT_PHONE + '.', 'error');
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = 'Request a consultation';
+      });
     });
   }
 
